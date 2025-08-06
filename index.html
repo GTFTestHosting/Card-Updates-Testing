@@ -1,278 +1,286 @@
-
 <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Business Card</title>
-   <style>
-     html, body {
-       height: 100%;
-       margin: 0;
-       font-family: Verdana, Geneva, sans-serif;
-     }
- 
-     .bg-image {
-       min-height: 100vh;
-       width: 100%;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       padding: 40px 10px;
-       box-sizing: border-box;
-       position: relative;
-       overflow: hidden;
-       background-image: url('https://files.catbox.moe/yh1om7.png'); 
-       background-size: cover;
-       background-position: center;
-     }
- 
-    .metal-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('https://cdn.textures4photoshop.com/tex/thumbs/scratched-metal-texture-seamless-2009.jpg'); 
-      background-size: 400px 400px;
-      mix-blend-mode: overlay;
-      opacity: 0.75;
-      z-index: 2;
-      pointer-events: none;
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sysco Business Card</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: auto;
     }
 
-    .gradient-overlay {
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Los_Angeles_with_Mount_Baldy.jpg/1920px-Los_Angeles_with_Mount_Baldy.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #00579f;
+      position: relative;
+    }
+    .card-content::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(300deg, #000000, #301701, #301701, #efbf04, #301701, #301701, #000000);
-      background-size: 240% 240%;
-      animation: gradient-animation 8s ease infinite;
-      opacity: 0.95;
-      mix-blend-mode: multiply;
+      background: rgba(255, 89, 25, 1);
+      mix-blend-mode: hard-light;
+      z-index: 0;
+    }
+    .card-content * {
+      position: relative;
       z-index: 1;
-      pointer-events: none;
     }
- 
-     @keyframes gradient-animation {
-       0% {
-         background-position: 0% 50%;
-       }
-       50% {
-         background-position: 100% 50%;
-       }
-       100% {
-         background-position: 0% 50%;
-       }
-     }
- 
-     .card-container {
-       position: relative;
-       z-index: 3;
-       background-color: rgba(0, 0, 0, 0.7);
-       color: white;
-       padding: 30px 5px;
-       max-width: 360px;
-       width: 100%;
-       border-radius: 10px;
-       text-align: center;
-       backdrop-filter: blur(10px);
-       overflow: hidden;
-       border: 1px solid rgba(255, 255, 255, 0.09);
-       box-shadow:
-         0 0 0 1px rgba(255, 255, 255, 0.025) inset,
-         0 0 80px rgba(255, 255, 255, 0.075);
-     }
- 
-     .card-container::before {
-       content: '';
-       position: absolute;
-       top: -50%;
-       left: -50%;
-       width: 200%;
-       height: 200%;
-       background: linear-gradient(120deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0.10) 100%);
-       transform: rotate(25deg);
-       animation: shimmer 1s ease-out forwards;
-       pointer-events: none;
-       z-index: 1;
-       filter: blur(8px);
-     }
- 
-     @keyframes shimmer {
-       0% {
-         transform: translateX(-50%) rotate(25deg);
-         opacity: 0;
-       }
-       25% {
-         opacity: 1;
-       }
-       100% {
-         transform: translateX(50%) rotate(25deg);
-         opacity: 1;
-       }
-     }
- 
-     .portrait {
-       width: 120px;
-       height: 120px;
-       object-fit: cover;
-       border-radius: 50%;
-       margin-bottom: 20px;
-       border: 3px solid #ffffff50;
-       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-       animation: glow 3s ease-in-out infinite;
-       z-index: 2;
-       position: relative;
-     }
- 
-     @keyframes glow {
-       0%, 100% {
-         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-       }
-       50% {
-         box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-       }
-     }
- 
-     h1, h2, .info-item {
-       position: relative;
-       z-index: 2;
-     }
- 
-     h1 {
-       font-size: 2em;
-       font-weight: bold;
-       margin-bottom: 10px;
-     }
- 
-     h2 {
-       font-size: 1em;
-       opacity: 0.85;
-       margin-bottom: 20px;
-     }
- 
-     .info-item {
-       margin: 12px 0;
-       font-size: 15px;
-       transition: all 0.3s ease;
-       padding: 8px;
-       border-radius: 8px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       gap: 10px;
-     }
- 
-     .info-item img.icon {
-       width: 24px;
-       height: 24px;
-       transition: transform 0.3s ease, filter 0.3s ease;
-     }
- 
-     .info-item a {
-       text-decoration: none;
-       color: #fff;
-       transition: all 0.3s ease;
-     }
- 
-     .info-item:hover {
-       background-color: rgba(255, 255, 255, 0.1);
-       transform: scale(1.05);
-       box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-     }
- 
-     .info-item:hover img.icon {
-       transform: scale(1.2);
-       filter: brightness(1.5);
-     }
- 
-     .info-item:hover a {
-       color: #f1f1f1;
-       font-weight: bold;
-       letter-spacing: 0.5px;
-     }
+    .logo {
+      text-align: center;
+    }
+    .logo img {
+      height: 120px;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 14px;
+      margin: 5px 0 10px;
+      color: #00579f;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 10px 0;
+    }
+    .name {
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      color: #00579f;
+    }
+    .title {
+      text-align: center;
+      font-size: 14px;
+      color: #0075c9;
+    }
+    .contact {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00579f;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .icon-button {
+      background-color: #0075c9;
+      color: white;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      margin-right: 10px;
+      font-size: 16px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .icon-link {
+      color: #00579f;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+    }
+    .address-link {
+      display: block;
+      color: #00579f;
+      font-size: 14px;
+      text-align: left;
+      margin: 20px 0 10px;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 0 30px;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .buttons a {
+      background: #0075c9;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      flex: 1 1 auto;
+      text-align: center;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .buttons svg {
+      width: 20px;
+      height: 20px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+    .footer {
+      background: #0075c9;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      padding: 10px 15px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .highlight {
+      color: #ffffff;
+    }
+    .save-contact {
+      background: #0075c9;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-size: 16px;
+      text-align: center;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      flex: 1 1 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-content">
+      <div class="logo">
+        <img
+          src="https://www.wikicorporates.org/mediawiki/images/e/ed/Sysco-Corporation-2008.svg"
+          alt="Sysco Logo"
+        />
+      </div>
+      <hr />
+      <div class="name">Domingo Mata</div>
+      <div class="title">
+        Sales Consultant<br />
+        Los Angeles Region
+      </div>
+      <div class="contact">
+        <a href="tel:6617517653" class="icon-link">
+          <span class="icon-button" aria-hidden="true">
+            <!-- Phone SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.29 12.29 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.29 12.29 0 0 0 2.8.7 2 2 0 0 1 1.73 2z"/>
+            </svg>
+          </span>
+          661-751-7653
+        </a>
+        <a href="mailto:domingomata@sysco.com" class="icon-link">
+          <span class="icon-button" aria-hidden="true">
+            <!-- Email SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+              <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+            </svg>
+          </span>
+          domingomata@sysco.com
+        </a>
+      </div>
 
-     @media (max-width: 600px) {
-       .card-container {
-         padding: 20px 15px;
-       }
- 
-       .portrait {
-         width: 100px;
-         height: 100px;
-       }
-     }
-   </style>
- </head>
- <body>
- 
- <div class="bg-image">
-   <div class="metal-overlay"></div>
-   <div class="gradient-overlay"></div>
- 
-   <div class="card-container">
-     <h1>Yesenia Zaragoza</h1>
-     <h2>Office Manager</h2>
- 
-     <div class="info-item">
-       <img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="Phone Icon" class="icon" />
-       <a href="tel:+18188972079,131">(818) 897-2079 ext:131</a>
-     </div>
- 
-     <div class="info-item">
-       <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email Icon" class="icon" />
-       <a href="mailto:yesenia@gracianatortilla.com">yesenia@gracianatortilla.com</a>
-     </div>
- 
-     <div class="info-item">
-       <img src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" alt="Location Icon" class="icon" />
-       <a href="https://maps.app.goo.gl/GznKDzucmNwPy2wP8" target="_blank">Our Sylmar Location</a>
-     </div>
- 
-     <div class="info-item">
-       <img src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" alt="Location Icon" class="icon" />
-       <a href="https://maps.app.goo.gl/5rD36bT492RHwwUG9" target="_blank">Our Bakersfield Location</a>
-     </div>
-    <div class="info-item">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/domain.png" alt="Website Icon" class="icon" />
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKaWrB-7_QnxcNYfaGACZs7Byo9JGEbgJDK0XmXo4aHRgddQ/viewform?usp=sharing" target="_blank">Become a Member</a>
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=3100+Sturgis+Road,+Oxnard,+CA+93030"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="address-link"
+        >3100 Sturgis Road<br /> Oxnard, CA 93030</a
+      >
+
+      <div class="buttons">
+        <a href="https://sysco.com" target="_blank" rel="noopener noreferrer">
+          <!-- Globe SVG icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <line x1="12" y1="2" x2="12" y2="22"/>
+            <path d="M8.5 3a24 24 0 0 0 0 18"/>
+            <path d="M15.5 3a24 24 0 0 1 0 18"/>
+          </svg>
+          About Us
+        </a>
+
+        <div
+          class="save-contact"
+          onclick="downloadVCF()"
+          role="button"
+          tabindex="0"
+          onkeypress="if(event.key==='Enter') downloadVCF()"
+        >
+          <!-- Down arrow with base SVG icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+            <path d="M12 3v12" />
+            <path d="M8 11l4 4l4-4" />
+            <path d="M6 21h12" />
+          </svg>
+          Add to Contacts
+        </div>
+      </div>
     </div>
 
-    <div class="info-item">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/domain.png" alt="Website2 Icon" class="icon" />
-      <a href="https://gtfcardhosting.github.io/Product-Brochure/" target="_blank">Our Product</a>
+    <!-- Footer is now outside card-content -->
+    <div class="footer">
+      YOUR ACCOUNT SUPPORT TEAMS<br />
+      ARE ONE CALL AWAY <span class="highlight">1-800-SyscoCS</span>
     </div>
-  <div class="info-item" onclick="downloadVCard()" style="cursor:pointer;">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/save.png" alt="Save Icon" class="icon" />
-    <span>Save to Contacts</span>
   </div>
 
-   </div>
- </div>
- 
-<script>
-function downloadVCard() {
-  const vCardData = `BEGIN:VCARD
+  <script>
+    function downloadVCF() {
+      const vCardData = `BEGIN:VCARD
 VERSION:3.0
-FN:Yesenia Zaragoza
-ORG:Graciana Tortilla Factory
-TITLE:Office Manager
-TEL;TYPE=WORK,VOICE:(818) 897-2079 ext.131
-EMAIL:yesenia@gracianatortilla.com
-ADR:;;Sylmar, CA;;;
-URL:https://gtfcardhosting.github.io/Product-Brochure/
+FN:Domingo Mata
+TITLE:Sales Consultant (Sysco)
+TEL;TYPE=WORK,VOICE:661-751-7653
+EMAIL:domingomata@sysco.com
+ADR:;;3100 Sturgis Road;Oxnard;CA;93030;United States;;;
 END:VCARD`;
 
-  const blob = new Blob([vCardData], { type: 'text/vcard' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'Yesenia-Zaragoza.vcf';
-  link.click();
-}
-</script>
-
- </body>
- </html>
+      const blob = new Blob([vCardData], { type: "text/vcard" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Domingo-Mata.vcf";
+      link.click();
+    }
+  </script>
+</body>
+</html>
