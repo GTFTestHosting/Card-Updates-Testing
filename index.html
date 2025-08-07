@@ -168,6 +168,11 @@
       font-size: 9px;
       text-decoration: none;
     }
+    .highlight2 {
+      color: white;
+      font-size: 11px;
+      text-decoration: none;
+    }
     .save-contact {
       background: #f9b023;
       color: black;
@@ -183,6 +188,28 @@
       cursor: pointer;
       flex: 1 1 auto;
     }
+    .address-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0 10px;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .address-box {
+      flex: 1;
+      min-width: 130px;
+      background: rgba(255, 255, 255, 0.0);
+      color: #fefefe;
+      font-size: 8px;
+      text-align: center;
+      text-decoration: none;
+      padding: 8px;
+      border-radius: 8px;
+      line-height: 1.4;
+    }
+
   </style>
 </head>
 <body>
@@ -200,16 +227,19 @@
         Graphic Designer
       </div>
       <div class="contact">
-        <a href="tel:6617517653" class="icon-link">
+<!-- Phone Number Button -->
+        <a href="tel:8188972079,,108" 
+        class="icon-link">
           <span class="icon-button" aria-hidden="true">
-            <!-- Phone SVG icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 24 24">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.29 12.29 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.29 12.29 0 0 0 2.8.7 2 2 0 0 1 1.73 2z"/>
             </svg>
           </span>
-          818-897-2079 ext:108
+          (818) 897-2079 ext:108
         </a>
-        <a href="mailto:domingomata@sysco.com" class="icon-link">
+<!-- Email Button -->
+        <a href="mailto:chris@gracianatortilla.com" 
+        class="icon-link">
           <span class="icon-button" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 24 24">
               <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
@@ -217,7 +247,9 @@
           </span>
           chris@gracianatortilla.com
         </a>
-        <a href="mailto:domingomata@sysco.com" class="icon-link">
+<!-- Product Brochure Button -->
+        <a href="https://gtfcardhosting.github.io/Product-Brochure/"
+        class="icon-link">
           <span class="icon-button" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" viewBox="0 0 24 24">
               <path d="M5 3h14a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2 4v2h10V7H7zm0 4v2h10v-2H7zm0 4v2h7v-2H7z"/>
@@ -228,17 +260,29 @@
 
       </div>
 
-      <a
-        href="https://www.google.com/maps/search/?api=1&query=3100+Sturgis+Road,+Oxnard,+CA+93030"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="address-link"
-        >12230 Foothill Blvd.<br /> Sylmar, CA 91340</a
-      >
+      <div class="address-row">
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Graciana+Tortilla+Factory"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="address-box"
+        >
+          <span class="highlight2">Sylmar Location</span><br />12230 Foothill Blvd.<br />Sylmar, CA 91340
+        </a>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Graciana+Tortilla+Factory+Bakersfield"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="address-box"
+              >
+                <span class="highlight2">Bakersfield Location</span><br />530 California Ave<br />Bakersfield, CA 93304
+              </a>
+            </div>
 
+<!-- About Us Button -->
       <div class="buttons">
-        <a href="https://sysco.com" target="_blank" rel="noopener noreferrer">
-          <!-- Globe SVG icon -->
+        <a href="https://www.gracianatortillafactory.com/" 
+        target="_blank" rel="noopener noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10"/>
             <line x1="2" y1="12" x2="22" y2="12"/>
@@ -248,7 +292,7 @@
           </svg>
           About Us
         </a>
-
+<!-- Save Contact Button -->
         <div
           class="save-contact"
           onclick="downloadVCF()"
@@ -269,7 +313,7 @@
 
     <div class="footer">
       Questions? We're happy to help.
-      Call us at <span class="highlight">818-279-2079</span>
+      Call us at <span class="highlight">(818) 897-2079</span>
     </div>
   </div>
 
@@ -277,17 +321,17 @@
     function downloadVCF() {
       const vCardData = `BEGIN:VCARD
 VERSION:3.0
-FN:Domingo Mata
-TITLE:Sales Consultant (Sysco)
-TEL;TYPE=WORK,VOICE:661-751-7653
-EMAIL:domingomata@sysco.com
-ADR:;;3100 Sturgis Road;Oxnard;CA;93030;United States;;;
+FN:Christopher Guzman
+TITLE:Graphic Designer (GTF)
+TEL;TYPE=WORK,VOICE:818-897-8079
+EMAIL:chris@gracianatortilla.com
+ADR:;;12239 Foothill Blvd;Sylmar;CA;91340;United States;;;
 END:VCARD`;
 
       const blob = new Blob([vCardData], { type: "text/vcard" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = "Domingo-Mata.vcf";
+      link.download = "Christopher-Guzman.vcf";
       link.click();
     }
   </script>
